@@ -1,13 +1,21 @@
 package ru.tanom.ui.home
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import ru.tanom.data.model.Ads
+import ru.tanom.data.mvvm.Event
+import ru.tanom.data.mvvm.viewModel.BaseViewModel
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel : BaseViewModel() {
+    val simpleLiveData = MutableLiveData<Event<Ads>>()
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
+    fun getAdsList() {
+        requestWithLiveData(simpleLiveData, {api.getAdsList()})
     }
-    val text: LiveData<String> = _text
+
+/*
+    fun getAdsOne(id: Int, callback: (data: Event<Ads>) -> Unit) {
+        requestWithLiveData(simpleLiveData, {api.getAdsOne(id = id)})
+    }
+*/
 }
