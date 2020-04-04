@@ -52,12 +52,12 @@ class HomeFragment : Fragment() {
 
     private fun showLoading() {
         (activity as? MainActivity)?.showProgress()
+        swipe_container.isRefreshing = false
     }
 
     private fun showSuccess(ads: List<Ads>?) {
         (activity as? MainActivity)?.hideProgress()
         adsAdapter.setData(ads ?: emptyList())
-        swipe_container.isRefreshing = false
     }
 
     private fun showError() {
