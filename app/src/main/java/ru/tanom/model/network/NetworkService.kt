@@ -1,4 +1,4 @@
-package ru.tanom.data.network
+package ru.tanom.model.network
 
 import okhttp3.Interceptor
 import okhttp3.Interceptor.Companion.invoke
@@ -40,12 +40,12 @@ object NetworkService {
         .addInterceptor(baseInterceptor)
         .build()
 
-    fun retrofitService(): Api {
+    fun retrofitService(): ApiInterface {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
-            .create(Api::class.java)
+            .create(ApiInterface::class.java)
     }
 }

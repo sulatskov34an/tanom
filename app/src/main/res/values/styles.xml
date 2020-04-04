@@ -21,4 +21,11 @@
         <item name="backgroundTint">#F9C044</item>
     </style>
 
+    <style name="MainProgressBar" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/colorPrimary</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorPrimary</item>
+    </style>
+
+
 </resources>

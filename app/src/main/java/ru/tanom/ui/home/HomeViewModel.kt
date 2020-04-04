@@ -1,21 +1,14 @@
 package ru.tanom.ui.home
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import ru.tanom.data.model.Ads
-import ru.tanom.data.mvvm.Event
-import ru.tanom.data.mvvm.viewModel.BaseViewModel
+import ru.tanom.model.network.dto.Ads
+import ru.tanom.base.viewmodel.Event
+import ru.tanom.base.viewmodel.BaseViewModel
 
 class HomeViewModel : BaseViewModel() {
-    val simpleLiveData = MutableLiveData<Event<Ads>>()
+    val list = MutableLiveData<Event<List<Ads>>>()
 
     fun getAdsList() {
-        requestWithLiveData(simpleLiveData, {api.getAdsList()})
+        request(list) {api.getAdsList()}
     }
-
-/*
-    fun getAdsOne(id: Int, callback: (data: Event<Ads>) -> Unit) {
-        requestWithLiveData(simpleLiveData, {api.getAdsOne(id = id)})
-    }
-*/
 }

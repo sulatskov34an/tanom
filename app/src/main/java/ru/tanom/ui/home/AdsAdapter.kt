@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.item_ads.view.*
 import ru.tanom.R
-import ru.tanom.data.model.Ads
+import ru.tanom.model.network.dto.Ads
 
 class AdsAdapter(private val listener: (Ads) -> Unit) :
     RecyclerView.Adapter<AdsAdapter.ViewHolder>() {

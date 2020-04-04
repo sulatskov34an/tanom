@@ -1,4 +1,4 @@
-package ru.tanom.data.model
+package ru.tanom.model.network.dto
 
 data class Ads(
     var id: Int?,
