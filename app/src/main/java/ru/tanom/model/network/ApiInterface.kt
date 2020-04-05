@@ -1,11 +1,10 @@
-package ru.tanom.data.network
+package ru.tanom.model.network
 
 import retrofit2.http.GET
 import retrofit2.http.Path
-import retrofit2.http.Query
-import ru.tanom.data.model.Ads
+import ru.tanom.model.network.dto.Ads
 
-interface Api {
+interface ApiInterface {
 
     @GET("ads/list")
     suspend fun getAdsList(): List<Ads>

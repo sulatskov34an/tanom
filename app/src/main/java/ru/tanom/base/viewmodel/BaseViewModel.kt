@@ -1,22 +1,21 @@
-package ru.tanom.data.mvvm.viewModel
+package ru.tanom.base.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.tanom.data.mvvm.Event
-import ru.tanom.data.network.Api
-import ru.tanom.data.network.NetworkService
+import ru.tanom.model.network.ApiInterface
+import ru.tanom.model.network.NetworkService
 
 abstract class BaseViewModel : ViewModel() {
 
-    var api: Api = NetworkService.retrofitService()
+    var api: ApiInterface = NetworkService.retrofitService()
 
 
-    fun <T> requestWithLiveData(
+    fun <T> request(
         liveData: MutableLiveData<Event<T>>,
-        request: suspend () -> List<T>
+        request: suspend () -> T
     ) {
 
         liveData.postValue(Event.loading())

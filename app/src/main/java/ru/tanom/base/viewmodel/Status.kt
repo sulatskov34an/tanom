@@ -1,4 +1,4 @@
-package ru.tanom.data.mvvm
+package ru.tanom.base.viewmodel
 
 enum class Status {
     SUCCESS,

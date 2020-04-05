@@ -4,18 +4,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
+import ru.tanom.MainActivity
 import ru.tanom.R
 import ru.tanom.common.SimpleDividerItemDecoration
-import ru.tanom.data.model.Ads
-import ru.tanom.data.mvvm.Status
-
+import ru.tanom.common.toast
+import ru.tanom.model.network.dto.Ads
+import ru.tanom.base.viewmodel.Status
 
 class HomeFragment : Fragment() {
 
@@ -37,7 +37,7 @@ class HomeFragment : Fragment() {
         view.ads_rv?.adapter = adsAdapter
         view.ads_rv?.addItemDecoration(SimpleDividerItemDecoration(context))
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        homeViewModel.simpleLiveData.observe(this.viewLifecycleOwner, Observer {
+        homeViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.LOADING -> showLoading()
                 Status.SUCCESS -> showSuccess(it.data)
@@ -45,18 +45,23 @@ class HomeFragment : Fragment() {
             }
         })
         homeViewModel.getAdsList()
+        swipe_container.setOnRefreshListener {
+            homeViewModel.getAdsList()
+        }
     }
 
     private fun showLoading() {
-
+        (activity as? MainActivity)?.showProgress()
+        swipe_container.isRefreshing = false
     }
 
     private fun showSuccess(ads: List<Ads>?) {
-        adsAdapter.setData(ads?: mutableListOf())
+        (activity as? MainActivity)?.hideProgress()
+        adsAdapter.setData(ads ?: emptyList())
     }
 
     private fun showError() {
-        Toast.makeText(view?.context, "Ошибка загрузки данных", Toast.LENGTH_SHORT).show()
+        toast(getString(R.string.error_text))
     }
 
 }
