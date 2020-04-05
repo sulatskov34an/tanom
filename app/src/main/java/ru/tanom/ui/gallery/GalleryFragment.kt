@@ -8,7 +8,10 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import kotlinx.android.synthetic.main.app_bar_main.*
 import ru.tanom.R
+import ru.tanom.common.visible
+import ru.tanom.ui.MainActivity
 
 class GalleryFragment : Fragment() {
 
@@ -23,7 +26,7 @@ class GalleryFragment : Fragment() {
             ViewModelProviders.of(this).get(GalleryViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_gallery, container, false)
         val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(this, Observer {
+        galleryViewModel.text.observe(this.viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
