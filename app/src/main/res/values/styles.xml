@@ -18,7 +18,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="TanomFloatingActionButton">
-        <item name="backgroundTint">#F9C044</item>
+        <item name="backgroundTint">#42AAE3</item>
     </style>
 
     <style name="MainProgressBar" parent="Theme.AppCompat.Light">

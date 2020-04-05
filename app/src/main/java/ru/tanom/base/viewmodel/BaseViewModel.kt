@@ -5,13 +5,32 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import ru.tanom.di.component.DaggerViewModelInjector
+import ru.tanom.di.component.ViewModelInjector
+import ru.tanom.di.module.NetworkModule
 import ru.tanom.model.network.ApiInterface
-import ru.tanom.model.network.NetworkService
+import ru.tanom.ui.home.HomeViewModel
+import javax.inject.Inject
 
 abstract class BaseViewModel : ViewModel() {
+    private val injector: ViewModelInjector = DaggerViewModelInjector
+        .builder()
+        .networkModule(NetworkModule)
+        .build()
 
-    var api: ApiInterface = NetworkService.retrofitService()
+    init {
+        inject()
+    }
 
+    private fun inject() {
+        when (this) {
+            is HomeViewModel -> injector.inject(this)
+
+        }
+    }
+
+    @Inject
+    lateinit var api: ApiInterface
 
     fun <T> request(
         liveData: MutableLiveData<Event<T>>,

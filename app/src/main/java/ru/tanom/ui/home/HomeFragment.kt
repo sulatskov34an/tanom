@@ -10,12 +10,12 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.android.synthetic.main.fragment_home.view.*
-import ru.tanom.MainActivity
 import ru.tanom.R
+import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.SimpleDividerItemDecoration
 import ru.tanom.common.toast
 import ru.tanom.model.network.dto.Ads
-import ru.tanom.base.viewmodel.Status
+import ru.tanom.ui.MainActivity
 
 class HomeFragment : Fragment() {
 
@@ -35,7 +35,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         view.ads_rv?.layoutManager = LinearLayoutManager(view.context)
         view.ads_rv?.adapter = adsAdapter
-        view.ads_rv?.addItemDecoration(SimpleDividerItemDecoration(context))
+        view.ads_rv?.addItemDecoration(SimpleDividerItemDecoration(view.context))
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {

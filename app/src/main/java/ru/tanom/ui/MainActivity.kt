@@ -1,4 +1,4 @@
-package ru.tanom
+package ru.tanom.ui
 
 import android.os.Bundle
 import androidx.appcompat.widget.Toolbar
@@ -12,6 +12,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.content_main.*
+import ru.tanom.R
 import ru.tanom.base.view.BaseActivity
 import ru.tanom.common.ProgressManager
 import ru.tanom.common.gone
@@ -40,8 +41,12 @@ class MainActivity : BaseActivity(), ProgressManager {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             topLevelDestinationIds = setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send
+                R.id.nav_home,
+                R.id.nav_gallery,
+                R.id.nav_slideshow,
+                R.id.nav_tools,
+                R.id.nav_share,
+                R.id.nav_send
             ), drawerLayout = drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
