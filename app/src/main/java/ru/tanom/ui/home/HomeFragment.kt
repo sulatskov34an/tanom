@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
@@ -40,9 +41,8 @@ class HomeFragment : Fragment(), BaseViewInterface {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as MainActivity).main_toolbar.gone()
-        view.ads_rv?.layoutManager = LinearLayoutManager(view.context)
+        view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
-        view.ads_rv?.addItemDecoration(SimpleDividerItemDecoration(view.context))
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             view.swipe_container.setColorSchemeColors(

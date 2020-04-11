@@ -2,21 +2,33 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/action_recents"
+        android:id="@+id/action_search"
         android:enabled="true"
-        android:icon="@drawable/ic_add_ad"
-        android:title="Recents"
+        android:icon="@drawable/ic_search"
+        android:title="Search"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
-        android:icon="@drawable/ic_menu_camera"
+        android:icon="@drawable/ic_favorite"
         android:title="Favorites"
         app:showAsAction="ifRoom" />
     <item
-        android:id="@+id/action_nearby"
+        android:id="@+id/action_add"
         android:enabled="true"
-        android:icon="@drawable/ic_menu_send"
-        android:title="Nearby"
+        android:icon="@drawable/ic_plus"
+        android:title="Add"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_message"
+        android:enabled="true"
+        android:icon="@drawable/ic_message"
+        android:title="Message"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile"
         app:showAsAction="ifRoom" />
 </menu>

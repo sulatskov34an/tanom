@@ -13,21 +13,21 @@
         <FrameLayout
             android:id="@+id/no_internet"
             android:layout_width="match_parent"
-            android:visibility="gone"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
             <ImageView
                 android:layout_width="200dp"
                 android:layout_height="200dp"
                 android:layout_gravity="center_horizontal|center_vertical"
-                android:src="@drawable/no_internet">
-            </ImageView>
+                android:src="@drawable/no_internet"></ImageView>
         </FrameLayout>
 
         <RelativeLayout
             android:id="@+id/search_rr"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="#FFFFFF"
+            android:layout_height="80dp"
+            android:background="@color/color_background"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/padding_item">
@@ -35,18 +35,20 @@
             <RelativeLayout
                 android:id="@+id/rl_search"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
+                android:layout_height="60dp"
+                android:elevation="16dp"
                 android:layout_centerVertical="true"
                 android:background="@drawable/edit_text_bg">
 
                 <ImageView
                     android:id="@+id/filter_search_btn"
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
-                    app:srcCompat="@drawable/ic_search" />
+                    android:layout_marginStart="15dp"
+                    android:elevation="8dp"
+                    app:srcCompat="@drawable/ic_search_gray" />
 
                 <EditText
                     android:id="@+id/filter_search_et"
@@ -65,11 +67,11 @@
 
                 <ImageView
                     android:id="@+id/filter_iv"
-                    android:layout_width="25dp"
-                    android:layout_height="25dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="15dp"
+                    android:layout_marginEnd="10dp"
                     android:src="@drawable/ic_filters" />
 
             </RelativeLayout>
@@ -78,7 +80,9 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/ads_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
+            android:overScrollMode="never"/>
 
     </LinearLayout>
 
