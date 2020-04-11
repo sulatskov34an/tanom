@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">tanom</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="nav_header_title">Android Studio</string>
-    <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
@@ -13,6 +9,10 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
-    <string name="search">Поиск</string>
-    <string name="error_text">Ошибка загрузки данных</string>
+    <string name="search">Search</string>
+    <string name="error_text">Error internet connection</string>
+    <string name="favorites">Favorites</string>
+    <string name="add">Add</string>
+    <string name="message">Message</string>
+    <string name="profile">Profile</string>
 </resources>

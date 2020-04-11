@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">tanom</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Настройки</string>
+
+    <string name="menu_home">Главная</string>
+    <string name="menu_gallery">Галерея</string>
+    <string name="menu_slideshow">Слайдшоу</string>
+    <string name="menu_tools">Инструменты</string>
+    <string name="menu_share">Поделиться</string>
+    <string name="menu_send">Отправить</string>
+    <string name="search">Поиск</string>
+    <string name="error_text">Ошибка загрузки данных</string>
+    <string name="favorites">Избранное</string>
+    <string name="add">Разместить</string>
+    <string name="message">Сообщения</string>
+    <string name="profile">Профиль</string>
+</resources>

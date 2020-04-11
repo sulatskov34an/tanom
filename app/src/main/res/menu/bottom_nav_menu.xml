@@ -5,30 +5,30 @@
         android:id="@+id/action_search"
         android:enabled="true"
         android:icon="@drawable/ic_search"
-        android:title="Search"
+        android:title="@string/search"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_favorites"
         android:enabled="true"
         android:icon="@drawable/ic_favorite"
-        android:title="Favorites"
+        android:title="@string/favorites"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_add"
         android:enabled="true"
         android:icon="@drawable/ic_plus"
-        android:title="Add"
+        android:title="@string/add"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_message"
         android:enabled="true"
         android:icon="@drawable/ic_message"
-        android:title="Message"
+        android:title="@string/message"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_profile"
         android:enabled="true"
         android:icon="@drawable/ic_profile"
-        android:title="Profile"
+        android:title="@string/profile"
         app:showAsAction="ifRoom" />
 </menu>
