@@ -1,5 +1,6 @@
 package ru.tanom.ui.home
 
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,7 +18,7 @@ import ru.tanom.base.view.BaseViewInterface
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.SimpleDividerItemDecoration
 import ru.tanom.common.gone
-import ru.tanom.common.toast
+import ru.tanom.common.snackbar
 import ru.tanom.common.visible
 import ru.tanom.model.network.dto.Ads
 import ru.tanom.ui.MainActivity
@@ -42,6 +43,17 @@ class HomeFragment : Fragment(), BaseViewInterface {
         view.ads_rv?.layoutManager = LinearLayoutManager(view.context)
         view.ads_rv?.adapter = adsAdapter
         view.ads_rv?.addItemDecoration(SimpleDividerItemDecoration(view.context))
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            view.swipe_container.setColorSchemeColors(
+                resources.getColor(
+                    R.color.colorPrimary,
+                    activity?.theme
+                )
+            )
+        } else {
+            view.swipe_container.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
+        }
         homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         homeViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
@@ -58,12 +70,24 @@ class HomeFragment : Fragment(), BaseViewInterface {
 
     private fun showSuccess(ads: List<Ads>?) {
         hideProgress()
+        hidePlaceholder()
         adsAdapter.setData(ads ?: emptyList())
     }
 
     private fun showError() {
-        toast(getString(R.string.error_text))
+        snackbar(getString(R.string.error_text))
+        hideProgress()
+        showPlaceholder()
     }
+
+    private fun showPlaceholder() {
+        view?.no_internet?.visible()
+    }
+
+    private fun hidePlaceholder() {
+        view?.no_internet?.gone()
+    }
+
 
     override fun showProgress() {
         (activity as? MainActivity)?.showProgress()
@@ -72,6 +96,7 @@ class HomeFragment : Fragment(), BaseViewInterface {
 
     override fun hideProgress() {
         (activity as? MainActivity)?.hideProgress()
+        swipe_container.isRefreshing = false
     }
 
 }

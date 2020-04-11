@@ -6,6 +6,7 @@ import dagger.Reusable
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import java.util.concurrent.TimeUnit
 
 @Module
 @Suppress("unused")
@@ -18,6 +19,8 @@ object OkHttpClientModule {
         .Builder()
         .addInterceptor(loggingInterceptor)
         .addInterceptor(baseInterceptor)
+        .readTimeout(5, TimeUnit.SECONDS)
+        .connectTimeout(5, TimeUnit.SECONDS)
         .build()
 
     @Provides
@@ -48,5 +51,4 @@ object OkHttpClientModule {
 
         return@invoke chain.proceed(request)
     }
-
 }
