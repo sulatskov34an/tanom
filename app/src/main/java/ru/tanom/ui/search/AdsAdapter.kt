@@ -1,4 +1,4 @@
-package ru.tanom.ui.home
+package ru.tanom.ui.search
 
 import android.view.LayoutInflater
 import android.view.View

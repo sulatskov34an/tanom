@@ -1,4 +1,4 @@
-package ru.tanom.ui.home
+package ru.tanom.ui.search
 
 import android.os.Build
 import android.os.Bundle
@@ -8,33 +8,36 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.fragment_search.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseViewInterface
 import ru.tanom.base.viewmodel.Status
-import ru.tanom.common.SimpleDividerItemDecoration
 import ru.tanom.common.gone
 import ru.tanom.common.snackbar
 import ru.tanom.common.visible
 import ru.tanom.model.network.dto.Ads
 import ru.tanom.ui.MainActivity
 
-class HomeFragment : Fragment(), BaseViewInterface {
+class SearchFragment : Fragment(), BaseViewInterface {
 
-    private lateinit var homeViewModel: HomeViewModel
-    private var adsAdapter = AdsAdapter {}
+    private lateinit var searchViewModel: SearchViewModel
+    private var adsAdapter =
+        AdsAdapter {
+            findNavController().navigate(R.id.action_to_favorite)
+        }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        setHasOptionsMenu(true)
+        val root = inflater.inflate(R.layout.fragment_search, container, false)
         return root
     }
 
@@ -54,17 +57,17 @@ class HomeFragment : Fragment(), BaseViewInterface {
         } else {
             view.swipe_container.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
         }
-        homeViewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        homeViewModel.list.observe(this.viewLifecycleOwner, Observer {
+        searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        searchViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.LOADING -> showProgress()
                 Status.SUCCESS -> showSuccess(it.data)
                 Status.ERROR -> showError()
             }
         })
-        homeViewModel.getAdsList()
+        searchViewModel.getAdsList()
         swipe_container.setOnRefreshListener {
-            homeViewModel.getAdsList()
+            searchViewModel.getAdsList()
         }
     }
 

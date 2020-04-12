@@ -1,4 +1,4 @@
-package ru.tanom.ui.slideshow
+package ru.tanom.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,21 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ru.tanom.R
 
-class SlideshowFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
-    private lateinit var slideshowViewModel: SlideshowViewModel
+    private lateinit var favoritesViewModel: FavoritesViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        slideshowViewModel =
-            ViewModelProviders.of(this).get(SlideshowViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_slideshow, container, false)
-        val textView: TextView = root.findViewById(R.id.text_slideshow)
-        slideshowViewModel.text.observe(this, Observer {
+        setHasOptionsMenu(true)
+        favoritesViewModel =
+            ViewModelProviders.of(this).get(FavoritesViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_favorite, container, false)
+        val textView: TextView = root.findViewById(R.id.text_favorite)
+        favoritesViewModel.text.observe(this.viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

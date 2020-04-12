@@ -1,4 +1,4 @@
-package ru.tanom.ui.send
+package ru.tanom.ui.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import ru.tanom.R
 
-class SendFragment : Fragment() {
+class ProfileFragment : Fragment() {
 
-    private lateinit var sendViewModel: SendViewModel
+    private lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        sendViewModel =
-            ViewModelProviders.of(this).get(SendViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_send, container, false)
-        val textView: TextView = root.findViewById(R.id.text_send)
-        sendViewModel.text.observe(viewLifecycleOwner, Observer {
+        profileViewModel =
+            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_profile, container, false)
+        val textView: TextView = root.findViewById(R.id.text_profile)
+        profileViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root
