@@ -7,16 +7,12 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.app_bar_main.*
-import kotlinx.android.synthetic.main.content_main.view.*
 import kotlinx.android.synthetic.main.fragment_ad_details.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.getProgressBar
-import ru.tanom.common.gone
-import ru.tanom.common.visible
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
@@ -35,7 +31,6 @@ class AdDetailsFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? MainActivity)?.showToolbar()
         (activity as? MainActivity)?.hideBottomNavigation()
         val id = arguments?.getInt(AppConst.AD_ID_KEY, 0)
         adDetailsViewModel = ViewModelProviders.of(this).get(AdDetailsViewModel::class.java)

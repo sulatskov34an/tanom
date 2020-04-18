@@ -1,23 +1,12 @@
 package ru.tanom.ui
 
 import android.os.Bundle
-import android.view.MenuItem
-import androidx.appcompat.widget.Toolbar
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.bottomnavigation.BottomNavigationMenu
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.app_bar_main.*
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseActivity
@@ -32,15 +21,6 @@ class MainActivity : BaseActivity(), ProgressManager {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val toolbar: Toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-
-        val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
-
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
         val navController = host.navController
@@ -49,14 +29,6 @@ class MainActivity : BaseActivity(), ProgressManager {
         bottomNav?.setOnNavigationItemSelectedListener{
             item -> onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))
         }
-    }
-
-    fun showToolbar(){
-        main_toolbar.visible()
-    }
-
-    fun hideToolbar(){
-        main_toolbar.gone()
     }
 
     fun hideBottomNavigation(){

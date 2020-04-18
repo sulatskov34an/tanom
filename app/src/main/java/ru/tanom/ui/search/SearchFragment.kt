@@ -5,21 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
-import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
-import ru.tanom.base.view.BaseViewInterface
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.gone
-import ru.tanom.common.snackbar
 import ru.tanom.common.visible
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
@@ -46,7 +42,6 @@ class SearchFragment : BaseFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as? MainActivity)?.hideToolbar()
         (activity as? MainActivity)?.showBottomNavigation()
         view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
