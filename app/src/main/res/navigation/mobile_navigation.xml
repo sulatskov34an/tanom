@@ -10,8 +10,8 @@
         android:name="ru.tanom.ui.search.SearchFragment"
         android:label="@string/search">
         <action
-            android:id="@+id/action_to_favorite"
-            app:destination="@id/favoritesFragment" />
+            android:id="@+id/action_to_ad_details"
+            app:destination="@id/adDetailsFragment" />
     </fragment>
 
     <fragment
@@ -36,4 +36,11 @@
         android:name="ru.tanom.ui.profile.ProfileFragment"
         android:label="@string/profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/adDetailsFragment"
+        android:name="ru.tanom.ui.ad_details.AdDetailsFragment"
+        android:label="@string/ad_details">
+    </fragment>
+
 </navigation>

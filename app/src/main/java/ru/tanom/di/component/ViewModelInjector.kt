@@ -3,6 +3,7 @@ package ru.tanom.di.component
 import dagger.Component
 import ru.tanom.di.module.NetworkModule
 import ru.tanom.di.module.OkHttpClientModule
+import ru.tanom.ui.ad_details.AdDetailsViewModel
 import ru.tanom.ui.search.SearchViewModel
 import javax.inject.Singleton
 
@@ -11,6 +12,7 @@ import javax.inject.Singleton
 interface ViewModelInjector {
 
     fun inject(searchViewModel: SearchViewModel)
+    fun inject(adDetailsViewModel: AdDetailsViewModel)
 
     @Component.Builder
     interface Builder {

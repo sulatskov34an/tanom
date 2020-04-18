@@ -9,6 +9,7 @@ import ru.tanom.di.component.DaggerViewModelInjector
 import ru.tanom.di.component.ViewModelInjector
 import ru.tanom.di.module.NetworkModule
 import ru.tanom.model.network.ApiInterface
+import ru.tanom.ui.ad_details.AdDetailsViewModel
 import ru.tanom.ui.search.SearchViewModel
 import javax.inject.Inject
 
@@ -25,7 +26,7 @@ abstract class BaseViewModel : ViewModel() {
     private fun inject() {
         when (this) {
             is SearchViewModel -> injector.inject(this)
-
+            is AdDetailsViewModel -> injector.inject(this)
         }
     }
 

@@ -8,27 +8,30 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
 import ru.tanom.R
+import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.view.BaseViewInterface
 import ru.tanom.base.viewmodel.Status
+import ru.tanom.common.AppConst
 import ru.tanom.common.gone
 import ru.tanom.common.snackbar
 import ru.tanom.common.visible
-import ru.tanom.model.network.dto.Ads
+import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
-class SearchFragment : Fragment(), BaseViewInterface {
+class SearchFragment : BaseFragment(){
 
     private lateinit var searchViewModel: SearchViewModel
     private var adsAdapter =
         AdsAdapter {
-            findNavController().navigate(R.id.action_to_favorite)
+            val bundle = Bundle()
+            bundle.putInt(AppConst.AD_ID_KEY, it.id ?: 0)
+            findNavController().navigate(R.id.action_to_ad_details, bundle)
         }
 
     override fun onCreateView(
@@ -43,7 +46,8 @@ class SearchFragment : Fragment(), BaseViewInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        (activity as MainActivity).main_toolbar.gone()
+        (activity as? MainActivity)?.hideToolbar()
+        (activity as? MainActivity)?.showBottomNavigation()
         view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
 
@@ -71,23 +75,17 @@ class SearchFragment : Fragment(), BaseViewInterface {
         }
     }
 
-    private fun showSuccess(ads: List<Ads>?) {
+    override fun <T> showSuccess(content: T?) {
         hideProgress()
         hidePlaceholder()
-        adsAdapter.setData(ads ?: emptyList())
+        adsAdapter.setData((content as? List<Ad>) ?: emptyList())
     }
 
-    private fun showError() {
-        snackbar(getString(R.string.error_text))
-        hideProgress()
-        showPlaceholder()
-    }
-
-    private fun showPlaceholder() {
+    override fun showPlaceholder() {
         view?.no_internet?.visible()
     }
 
-    private fun hidePlaceholder() {
+    override fun hidePlaceholder() {
         view?.no_internet?.gone()
     }
 
