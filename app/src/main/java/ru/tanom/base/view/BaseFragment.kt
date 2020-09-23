@@ -8,9 +8,9 @@ import ru.tanom.ui.MainActivity
 
 abstract class BaseFragment : Fragment(), BaseViewInterface {
 
-    abstract fun <T> showSuccess(content: T?)
+    abstract fun <T> onSuccess(content: T?)
 
-    fun showError() {
+    fun onError() {
         snackbar(getString(R.string.error_text))
         hideProgress()
         showPlaceholder()
@@ -20,7 +20,7 @@ abstract class BaseFragment : Fragment(), BaseViewInterface {
 
     abstract fun hidePlaceholder()
 
-    override fun showProgress() {
+    override fun onProgress() {
         (activity as? MainActivity)?.showProgress()
         swipe_container?.isRefreshing = false
     }

@@ -59,9 +59,9 @@ class SearchFragment : BaseFragment(){
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
-                Status.LOADING -> showProgress()
-                Status.SUCCESS -> showSuccess(it.data)
-                Status.ERROR -> showError()
+                Status.LOADING -> onProgress()
+                Status.SUCCESS -> onSuccess(it.data)
+                Status.ERROR -> onError()
             }
         })
         searchViewModel.getAdsList()
@@ -70,7 +70,7 @@ class SearchFragment : BaseFragment(){
         }
     }
 
-    override fun <T> showSuccess(content: T?) {
+    override fun <T> onSuccess(content: T?) {
         hideProgress()
         hidePlaceholder()
         adsAdapter.setData((content as? List<Ad>) ?: emptyList())
@@ -85,7 +85,7 @@ class SearchFragment : BaseFragment(){
     }
 
 
-    override fun showProgress() {
+    override fun onProgress() {
         (activity as? MainActivity)?.showProgress()
         swipe_container.isRefreshing = false
     }

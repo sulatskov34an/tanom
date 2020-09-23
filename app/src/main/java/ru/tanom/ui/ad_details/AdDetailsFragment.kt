@@ -36,16 +36,16 @@ class AdDetailsFragment : BaseFragment() {
         adDetailsViewModel = ViewModelProviders.of(this).get(AdDetailsViewModel::class.java)
         adDetailsViewModel.ad.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
-                Status.LOADING -> showProgress()
-                Status.SUCCESS -> showSuccess(it.data)
-                Status.ERROR -> showError()
+                Status.LOADING -> onProgress()
+                Status.SUCCESS -> onSuccess(it.data)
+                Status.ERROR -> onError()
             }
         })
         adDetailsViewModel.getAd(id)
     }
 
 
-    override fun <T> showSuccess(content: T?) {
+    override fun <T> onSuccess(content: T?) {
         hideProgress()
         view?.title?.text = (content as? Ad)?.title
         context?.let {
