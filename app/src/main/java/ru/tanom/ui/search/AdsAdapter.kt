@@ -42,7 +42,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         fun bind(ad: Ad, listener: (Ad) -> Unit) {
-            itemView.description.text = ad.description
+            itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
                 val path = "non"
                 Picasso.get()
@@ -54,7 +54,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
             itemView.setOnClickListener {
                 listener(ad)
             }
-            itemView.price.text = ad.price.toString()
+            itemView.price.text = "${ad.price} ₽"
             itemView.inspectionPlace.text = ad.inspectionPlace
             itemView.date.text = getDate(ad.creationDate)
         }

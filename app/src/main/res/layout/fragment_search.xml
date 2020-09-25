@@ -27,7 +27,7 @@
             android:id="@+id/search_rr"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:background="@color/color_background"
+            android:background="@color/color_main_background"
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:padding="@dimen/padding_item">
@@ -81,7 +81,7 @@
             android:id="@+id/ads_rv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_background"
+            android:background="@color/color_main_background"
             android:overScrollMode="never" />
 
     </LinearLayout>
