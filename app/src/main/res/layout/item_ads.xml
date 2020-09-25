@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="@dimen/padding_item">
+    android:padding="@dimen/padding_root">
 
     <LinearLayout
         android:layout_width="match_parent"

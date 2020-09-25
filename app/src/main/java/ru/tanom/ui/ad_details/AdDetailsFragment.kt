@@ -61,7 +61,10 @@ class AdDetailsFragment : BaseFragment() {
                     .into(image)
             }
         }
-        view?.price?.text = ad?.price?.toString()
+        view?.title?.text =
+            "${ad?.carFactory} ${ad?.carModel}, ${ad?.productionYear}, ${ad?.mileage}"
+        view?.inspectionPlace?.text = ad?.inspectionPlace
+        view?.price?.text = "${ad?.price} ₽"
         view?.creation_date?.text = getDate(ad?.creationDate ?: "")
 
     }

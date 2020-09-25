@@ -30,7 +30,7 @@
             android:background="@color/color_main_background"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_item">
+            android:padding="@dimen/padding_root">
 
             <RelativeLayout
                 android:id="@+id/rl_search"
