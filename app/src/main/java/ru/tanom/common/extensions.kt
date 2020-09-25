@@ -41,5 +41,5 @@ fun getProgressBar(context: Context): CircularProgressDrawable {
 }
 
 fun getDate(date: String): String{
-    return date
+    return date.replace(" ", " в ")
 }

@@ -6,9 +6,9 @@ import ru.tanom.model.network.dto.Ad
 
 interface ApiInterface {
 
-    @GET("ads/list")
-    suspend fun getAdsList(): List<Ad>
+    @GET("ad/list")
+    suspend fun getAdsList(): BaseResponse<List<Ad>>
 
-    @GET("ads/one/{id}")
-    suspend fun getAd(@Path("id") id: Int?): Ad
+    @GET("ad/one/{id}")
+    suspend fun getAd(@Path("id") id: Int?): BaseResponse<Ad>
 }

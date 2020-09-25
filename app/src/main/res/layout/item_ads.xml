@@ -48,13 +48,13 @@
                 android:padding="8dp">
 
                 <TextView
-                    android:id="@+id/title"
+                    android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:layout_marginTop="4dp"
                     android:textSize="12sp"
-                    tools:text="title" />
+                    tools:text="description" />
 
                 <TextView
                     android:id="@+id/price"
@@ -66,7 +66,7 @@
                     tools:text="25 руб." />
 
                 <TextView
-                    android:id="@+id/city"
+                    android:id="@+id/inspectionPlace"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"

@@ -12,6 +12,8 @@ import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
+import ru.tanom.common.getDate
+import ru.tanom.common.getDate
 import ru.tanom.common.getProgressBar
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
@@ -37,7 +39,7 @@ class AdDetailsFragment : BaseFragment() {
         adDetailsViewModel.ad.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.LOADING -> onProgress()
-                Status.SUCCESS -> onSuccess(it.data)
+                Status.SUCCESS -> onSuccess(it.data?.result)
                 Status.ERROR -> onError()
             }
         })
@@ -47,7 +49,8 @@ class AdDetailsFragment : BaseFragment() {
 
     override fun <T> onSuccess(content: T?) {
         hideProgress()
-        view?.title?.text = (content as? Ad)?.title
+        val ad = (content as? Ad)
+        view?.description?.text = ad?.description
         context?.let {
             view?.image?.apply {
                 val path = "saffdasfd"
@@ -58,8 +61,8 @@ class AdDetailsFragment : BaseFragment() {
                     .into(image)
             }
         }
-        view?.price?.text = "50 руб."
-        view?.creation_date?.text = (content as? Ad)?.creationDate
+        view?.price?.text = ad?.price?.toString()
+        view?.creation_date?.text = getDate(ad?.creationDate ?: "")
 
     }
 

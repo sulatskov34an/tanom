@@ -41,10 +41,10 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bind(ads: Ad, listener: (Ad) -> Unit) {
-            itemView.title.text = ads.title
+        fun bind(ad: Ad, listener: (Ad) -> Unit) {
+            itemView.description.text = ad.description
             itemView.image?.apply {
-                val path = "saffdasfd"
+                val path = "non"
                 Picasso.get()
                     .load(path)
                     .error(R.drawable.ic_error)
@@ -52,11 +52,11 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
                     .into(itemView.image)
             }
             itemView.setOnClickListener {
-                listener(ads)
+                listener(ad)
             }
-            itemView.price.text = "25 руб."
-            itemView.city.text = "Волгоград"
-            itemView.date.text = getDate(ads.creationDate)
+            itemView.price.text = ad.price.toString()
+            itemView.inspectionPlace.text = ad.inspectionPlace
+            itemView.date.text = getDate(ad.creationDate)
         }
     }
 }

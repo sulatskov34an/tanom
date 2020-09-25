@@ -4,11 +4,12 @@ import androidx.lifecycle.MutableLiveData
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.base.viewmodel.Event
 import ru.tanom.base.viewmodel.BaseViewModel
+import ru.tanom.model.network.BaseResponse
 
 class SearchViewModel : BaseViewModel() {
-    val list = MutableLiveData<Event<List<Ad>>>()
+    val list = MutableLiveData<Event<BaseResponse<List<Ad>>>>()
 
     fun getAdsList() {
-        request(list) {api.getAdsList()}
+        request(list) { api.getAdsList() }
     }
 }

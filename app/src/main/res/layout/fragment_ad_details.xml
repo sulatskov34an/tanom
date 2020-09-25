@@ -29,7 +29,7 @@
         app:layout_constraintTop_toBottomOf="@id/add_details_toolbar"/>
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -41,7 +41,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/title"/>
+        app:layout_constraintTop_toBottomOf="@id/description"/>
 
     <TextView
         android:id="@+id/text"

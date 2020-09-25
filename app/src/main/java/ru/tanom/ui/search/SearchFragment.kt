@@ -60,7 +60,7 @@ class SearchFragment : BaseFragment(){
         searchViewModel.list.observe(this.viewLifecycleOwner, Observer {
             when (it.status) {
                 Status.LOADING -> onProgress()
-                Status.SUCCESS -> onSuccess(it.data)
+                Status.SUCCESS -> onSuccess(it.data?.result)
                 Status.ERROR -> onError()
             }
         })
