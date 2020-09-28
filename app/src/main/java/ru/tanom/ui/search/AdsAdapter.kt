@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.item_ads.view.*
 import ru.tanom.R
-import ru.tanom.common.getDate
+import ru.tanom.common.TimeUtils
 import ru.tanom.common.getProgressBar
 import ru.tanom.model.network.dto.Ad
 
@@ -41,6 +41,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+
         fun bind(ad: Ad, listener: (Ad) -> Unit) {
             itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
@@ -56,7 +57,8 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
             }
             itemView.price.text = "${ad.price} ₽"
             itemView.inspectionPlace.text = ad.inspectionPlace
-            itemView.date.text = getDate(ad.creationDate)
+            itemView.date.text =
+                TimeUtils(itemView.context).getDateWithInTime(itemView.context, ad.creationDate)
         }
     }
 }

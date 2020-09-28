@@ -12,8 +12,7 @@ import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
-import ru.tanom.common.getDate
-import ru.tanom.common.getDate
+import ru.tanom.common.TimeUtils
 import ru.tanom.common.getProgressBar
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
@@ -65,7 +64,10 @@ class AdDetailsFragment : BaseFragment() {
             "${ad?.carFactory} ${ad?.carModel}, ${ad?.productionYear}, ${ad?.mileage}"
         view?.inspectionPlace?.text = ad?.inspectionPlace
         view?.price?.text = "${ad?.price} ₽"
-        view?.creation_date?.text = getDate(ad?.creationDate ?: "")
+        view?.context?.let {
+            view?.creation_date?.text =
+                TimeUtils(it).getDateWithInTime(it, ad?.creationDate ?: 0)
+        }
 
     }
 

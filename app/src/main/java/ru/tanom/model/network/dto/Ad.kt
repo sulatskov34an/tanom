@@ -13,5 +13,5 @@ data class Ad(
     val inspectionPlace: String,
     val price: Int,
     val phone: String,
-    val creationDate: String
+    val creationDate: Long
 )
