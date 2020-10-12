@@ -9,12 +9,12 @@ import kotlinx.android.synthetic.main.item_ads.view.*
 import ru.tanom.R
 import ru.tanom.common.TimeUtils
 import ru.tanom.common.getProgressBar
-import ru.tanom.model.network.dto.String
+import ru.tanom.model.network.dto.Ad
 
-class AdsAdapter(private val listener: (String) -> Unit) :
+class AdsAdapter(private val listener: (Ad) -> Unit) :
     RecyclerView.Adapter<AdsAdapter.AdViewHolder>() {
 
-    private val ads = mutableListOf<String>()
+    private val ads = mutableListOf<Ad>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
 
@@ -33,7 +33,7 @@ class AdsAdapter(private val listener: (String) -> Unit) :
 
     override fun getItemCount() = ads.size
 
-    fun setData(items: List<String>) {
+    fun setData(items: List<Ad>) {
         ads.clear()
         ads.addAll(items)
         notifyDataSetChanged()
@@ -42,7 +42,7 @@ class AdsAdapter(private val listener: (String) -> Unit) :
     class AdViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
-        fun bind(ad: String, listener: (String) -> Unit) {
+        fun bind(ad: Ad, listener: (Ad) -> Unit) {
             itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
                 val path = "non"

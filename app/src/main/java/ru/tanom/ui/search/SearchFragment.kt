@@ -19,7 +19,7 @@ import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.gone
 import ru.tanom.common.visible
-import ru.tanom.model.network.dto.String
+import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
 class SearchFragment : BaseFragment(){
@@ -44,6 +44,7 @@ class SearchFragment : BaseFragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        (activity as? MainActivity)?.hideKeyboard()
         (activity as? MainActivity)?.showBottomNavigation()
         view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
@@ -77,7 +78,7 @@ class SearchFragment : BaseFragment(){
     override fun <T> onSuccess(content: T?) {
         hideProgress()
         hidePlaceholder()
-        adsAdapter.setData((content as? List<String>) ?: emptyList())
+        adsAdapter.setData((content as? List<Ad>) ?: emptyList())
     }
 
     override fun showPlaceholder() {

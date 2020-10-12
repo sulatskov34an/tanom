@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.google.android.material.snackbar.Snackbar
 
+
 interface ProgressManager {
     fun showProgress()
     fun hideProgress()
