@@ -14,7 +14,7 @@ import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.TimeUtils
 import ru.tanom.common.getProgressBar
-import ru.tanom.model.network.dto.Ad
+import ru.tanom.model.network.dto.String
 import ru.tanom.ui.MainActivity
 
 class AdDetailsFragment : BaseFragment() {
@@ -48,8 +48,8 @@ class AdDetailsFragment : BaseFragment() {
 
     override fun <T> onSuccess(content: T?) {
         hideProgress()
-        val ad = (content as? Ad)
-        view?.description?.text = ad?.description
+        val ad = (content as? String)
+        view?.description?.text = ad?.description.toString()
         context?.let {
             view?.image?.apply {
                 val path = "saffdasfd"
@@ -62,7 +62,7 @@ class AdDetailsFragment : BaseFragment() {
         }
         view?.title?.text =
             "${ad?.carFactory} ${ad?.carModel}, ${ad?.productionYear}, ${ad?.mileage}"
-        view?.inspectionPlace?.text = ad?.inspectionPlace
+        view?.inspectionPlace?.text = ad?.inspectionPlace.toString()
         view?.price?.text = "${ad?.price} ₽"
         view?.context?.let {
             view?.creation_date?.text =

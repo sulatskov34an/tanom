@@ -1,6 +1,6 @@
 package ru.tanom.model.network.dto
 
-data class Ad(
+data class String(
     val id: Int,
     val carFactory: String,
     val carModel: String,

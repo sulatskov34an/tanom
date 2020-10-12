@@ -9,16 +9,16 @@ import kotlinx.android.synthetic.main.item_ads.view.*
 import ru.tanom.R
 import ru.tanom.common.TimeUtils
 import ru.tanom.common.getProgressBar
-import ru.tanom.model.network.dto.Ad
+import ru.tanom.model.network.dto.String
 
-class AdsAdapter(private val listener: (Ad) -> Unit) :
-    RecyclerView.Adapter<AdsAdapter.ViewHolder>() {
+class AdsAdapter(private val listener: (String) -> Unit) :
+    RecyclerView.Adapter<AdsAdapter.AdViewHolder>() {
 
-    private val ads = mutableListOf<Ad>()
+    private val ads = mutableListOf<String>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdViewHolder {
 
-        return ViewHolder(
+        return AdViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.item_ads,
                 parent,
@@ -27,22 +27,22 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
         )
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AdViewHolder, position: Int) {
         holder.bind(ads[position], listener)
     }
 
     override fun getItemCount() = ads.size
 
-    fun setData(items: List<Ad>) {
+    fun setData(items: List<String>) {
         ads.clear()
         ads.addAll(items)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class AdViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
 
-        fun bind(ad: Ad, listener: (Ad) -> Unit) {
+        fun bind(ad: String, listener: (String) -> Unit) {
             itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
                 val path = "non"
@@ -56,7 +56,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
                 listener(ad)
             }
             itemView.price.text = "${ad.price} ₽"
-            itemView.inspectionPlace.text = ad.inspectionPlace
+            itemView.inspectionPlace.text = ad.inspectionPlace.toString()
             itemView.date.text =
                 TimeUtils(itemView.context).getDateWithInTime(itemView.context, ad.creationDate)
         }

@@ -11,13 +11,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
+import kotlinx.android.synthetic.main.placeholder_search_shimmer.*
+import kotlinx.android.synthetic.main.placeholder_search_shimmer.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.gone
 import ru.tanom.common.visible
-import ru.tanom.model.network.dto.Ad
+import ru.tanom.model.network.dto.String
 import ru.tanom.ui.MainActivity
 
 class SearchFragment : BaseFragment(){
@@ -45,6 +47,8 @@ class SearchFragment : BaseFragment(){
         (activity as? MainActivity)?.showBottomNavigation()
         view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
+        view.shimmer_ads_rv.layoutManager = GridLayoutManager(view.context, 2)
+        view.shimmer_ads_rv.adapter = ShimmerAdsAdapter(arrayOf(0, 0, 0, 0))
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             view.swipe_container.setColorSchemeColors(
@@ -73,7 +77,7 @@ class SearchFragment : BaseFragment(){
     override fun <T> onSuccess(content: T?) {
         hideProgress()
         hidePlaceholder()
-        adsAdapter.setData((content as? List<Ad>) ?: emptyList())
+        adsAdapter.setData((content as? List<String>) ?: emptyList())
     }
 
     override fun showPlaceholder() {
@@ -86,12 +90,12 @@ class SearchFragment : BaseFragment(){
 
 
     override fun onProgress() {
-        (activity as? MainActivity)?.showProgress()
+        shimmer_search.visible()
         swipe_container.isRefreshing = false
     }
 
     override fun hideProgress() {
-        (activity as? MainActivity)?.hideProgress()
+        shimmer_search.gone()
         swipe_container.isRefreshing = false
     }
 

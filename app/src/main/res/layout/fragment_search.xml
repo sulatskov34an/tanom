@@ -6,9 +6,13 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:id="@+id/search_ll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <include layout="@layout/placeholder_search_shimmer"
+            android:visibility="gone"/>
 
         <FrameLayout
             android:id="@+id/no_internet"
@@ -30,7 +34,7 @@
             android:background="@color/color_main_background"
             android:gravity="center_vertical"
             android:orientation="horizontal"
-            android:padding="@dimen/padding_root">
+            android:padding="12dp">
 
             <RelativeLayout
                 android:id="@+id/rl_search"
@@ -82,7 +86,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/color_main_background"
-            android:overScrollMode="never" />
+            android:overScrollMode="never"
+            android:paddingBottom="60dp"/>
 
     </LinearLayout>
 
