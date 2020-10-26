@@ -45,7 +45,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
         fun bind(ad: Ad, listener: (Ad) -> Unit) {
             itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
-                val path = "non"
+                val path = "https://tanom.herokuapp.com/file/files/kosmos-f11207f0020c.jpg"
                 Picasso.get()
                     .load(path)
                     .error(R.drawable.ic_error)
