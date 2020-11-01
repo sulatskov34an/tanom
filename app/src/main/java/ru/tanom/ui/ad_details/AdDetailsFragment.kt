@@ -80,7 +80,7 @@ class AdDetailsFragment : BaseFragment() {
     }
 
     override fun setToolbar() {
-        text_toolbar.setText(R.string.to_search)
+        text_toolbar.setText(R.string.search)
         toolbar.setOnClickListener{ findNavController().navigate(R.id.action_to_ads_search) }
     }
 }
