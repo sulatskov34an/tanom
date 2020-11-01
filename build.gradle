@@ -8,6 +8,7 @@ buildscript {
     ext.lifecycleVersion = '1.1.1'
     ext.retrofitVersion = '2.6.2'
     ext.loggingInterceptorVersion = '4.2.1'
+    ext.compose_version = '0.1.0-dev01'
 
     repositories {
         google()

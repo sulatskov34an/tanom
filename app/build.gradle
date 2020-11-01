@@ -29,7 +29,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = "1.8"
     }
 
     kapt {
@@ -38,6 +38,15 @@ android {
 }
 
 dependencies {
+    implementation "androidx.compose:compose-runtime:$compose_version"
+    kapt "androidx.compose:compose-compiler:$compose_version"
+
+    implementation "androidx.ui:ui-layout:$compose_version"
+    implementation "androidx.ui:ui-android-text:$compose_version"
+    implementation "androidx.ui:ui-text:$compose_version"
+    implementation "androidx.ui:ui-material:$compose_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect"
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation 'androidx.appcompat:appcompat:1.1.0'
