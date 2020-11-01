@@ -21,8 +21,8 @@
             android:visibility="gone">
 
             <ImageView
-                android:layout_width="100dp"
-                android:layout_height="100dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:src="@drawable/no_internet" />
         </FrameLayout>
