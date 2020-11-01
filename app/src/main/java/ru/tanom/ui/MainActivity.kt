@@ -1,6 +1,11 @@
 package ru.tanom.ui
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.Window
+import android.view.WindowManager
+import androidx.annotation.IdRes
+import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI.onNavDestinationSelected
@@ -14,13 +19,16 @@ import ru.tanom.common.ProgressManager
 import ru.tanom.common.gone
 import ru.tanom.common.visible
 
+
 class MainActivity : BaseActivity(), ProgressManager {
 
     override val layoutResId: Int
         get() = R.layout.activity_main
 
+    @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setStatusBarColor(R.color.color_main_background)
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
         val navController = host.navController
@@ -29,6 +37,14 @@ class MainActivity : BaseActivity(), ProgressManager {
         bottomNav?.setOnNavigationItemSelectedListener{
             item -> onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))
         }
+    }
+
+    @SuppressLint("ResourceType")
+    private fun setStatusBarColor(@IdRes color: Int) {
+        val window: Window = this.window
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+        window.statusBarColor = ContextCompat.getColor(this, color)
     }
 
     fun hideBottomNavigation(){
