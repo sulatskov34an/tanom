@@ -28,7 +28,7 @@ class MainActivity : BaseActivity(), ProgressManager {
     @SuppressLint("ResourceType")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStatusBarColor(R.color.color_main_background)
+        setStatusBarColor(R.color.color_black)
         val host: NavHostFragment = supportFragmentManager
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
         val navController = host.navController

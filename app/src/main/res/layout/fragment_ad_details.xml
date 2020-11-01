@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
+            android:background="@color/color_white"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
@@ -43,9 +43,9 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        android:id="@+id/content"
         android:layout_height="match_parent"
         android:padding="12dp">
 
@@ -89,7 +89,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
-            android:background="@color/gray"
+            android:background="@color/color_gray"
             app:layout_constraintTop_toBottomOf="@id/inspectionPlace" />
 
         <TextView
@@ -106,7 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:layout_marginTop="4dp"
-            android:background="@color/gray"
+            android:background="@color/color_gray"
             app:layout_constraintTop_toBottomOf="@id/description" />
 
         <TextView

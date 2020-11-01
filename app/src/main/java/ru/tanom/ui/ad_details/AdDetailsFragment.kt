@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.fragment_ad_details.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
-import ru.tanom.common.AppConst
-import ru.tanom.common.TimeUtils
-import ru.tanom.common.getProgressBar
+import ru.tanom.common.*
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
@@ -35,6 +33,7 @@ class AdDetailsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? MainActivity)?.hideBottomNavigation()
+        view.content.gone()
         val id = arguments?.getInt(AppConst.AD_ID_KEY, 0)
         adDetailsViewModel = ViewModelProviders.of(this).get(AdDetailsViewModel::class.java)
         adDetailsViewModel.ad.observe(this.viewLifecycleOwner, Observer {
@@ -49,6 +48,7 @@ class AdDetailsFragment : BaseFragment() {
 
 
     override fun <T> onSuccess(content: T?) {
+        view?.content?.visible()
         hideProgress()
         val ad = (content as? Ad)
         view?.description?.text = ad?.description.toString()
