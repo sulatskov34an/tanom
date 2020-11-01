@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_ad_details.*
 import kotlinx.android.synthetic.main.fragment_ad_details.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
@@ -75,5 +77,10 @@ class AdDetailsFragment : BaseFragment() {
     }
 
     override fun hidePlaceholder() {
+    }
+
+    override fun setToolbar() {
+        text_toolbar.setText(R.string.to_search)
+        toolbar.setOnClickListener{ findNavController().navigate(R.id.action_to_ads_search) }
     }
 }

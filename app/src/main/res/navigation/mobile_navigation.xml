@@ -41,6 +41,9 @@
         android:id="@+id/adDetailsFragment"
         android:name="ru.tanom.ui.ad_details.AdDetailsFragment"
         android:label="@string/ad_details">
+        <action
+            android:id="@+id/action_to_ads_search"
+            app:destination="@id/searchFragment" />
     </fragment>
 
 </navigation>

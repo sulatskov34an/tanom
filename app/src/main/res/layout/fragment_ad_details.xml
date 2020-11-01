@@ -20,7 +20,26 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_arrow" />
+
+                <TextView
+                    android:id="@+id/text_toolbar"
+                    style="@style/TextToolbar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    tools:text="К поиску" />
+            </LinearLayout>
+        </Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -75,8 +94,8 @@
 
         <TextView
             android:id="@+id/description"
-            android:layout_width="wrap_content"
             style="@style/TitleSmallBlack"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/middle_divider"
@@ -92,10 +111,10 @@
 
         <TextView
             android:id="@+id/creation_date"
+            style="@style/TextSmallGray"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            style="@style/TextSmallGray"
             app:layout_constraintTop_toBottomOf="@id/bottom_divider"
             tools:text="23 сентября, 10:55" />
     </androidx.constraintlayout.widget.ConstraintLayout>

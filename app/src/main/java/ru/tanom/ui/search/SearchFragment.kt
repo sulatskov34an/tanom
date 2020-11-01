@@ -88,6 +88,10 @@ class SearchFragment : BaseFragment(){
         view?.no_internet?.gone()
     }
 
+    override fun setToolbar() {
+
+    }
+
 
     override fun onProgress() {
         shimmer_search.visible()
