@@ -1,9 +1,9 @@
 package ru.tanom.ui.ad_details
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.view.GestureDetector.SimpleOnGestureListener
+import android.view.MotionEvent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -20,13 +20,17 @@ import ru.tanom.ui.MainActivity
 class AdDetailsFragment : BaseFragment() {
 
     private lateinit var adDetailsViewModel: AdDetailsViewModel
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_ad_details, container, false)
+        root.setOnTouchListener(object: OnSwipeTouchListener(activity){
+            override fun onSwipeRight() {
+                findNavController().navigate(R.id.action_to_ads_search)
+            }
+        })
         return root
     }
 
@@ -80,7 +84,7 @@ class AdDetailsFragment : BaseFragment() {
     }
 
     override fun setToolbar() {
-        text_toolbar.setText(R.string.search)
-        toolbar.setOnClickListener{ findNavController().navigate(R.id.action_to_ads_search) }
+        text_toolbar.setText(R.string.to_search)
+        back.setOnClickListener { findNavController().navigate(R.id.action_to_ads_search) }
     }
 }

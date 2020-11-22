@@ -10,4 +10,7 @@
     <string name="message">Message</string>
     <string name="profile">Profile</string>
     <string name="ad_details">Ad Details</string>
+    <string name="to_search">To search</string>
+    <string name="signin_or_signup_text">Login or register to use the features</string>
+    <string name="login_or_signup">Login or register</string>
 </resources>

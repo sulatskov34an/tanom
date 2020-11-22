@@ -23,6 +23,7 @@
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <LinearLayout
+                android:id="@+id/back"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
 
@@ -58,7 +59,7 @@
 
         <TextView
             android:id="@+id/title"
-            style="@style/TextNormBlack"
+            style="@style/TextBigBlack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -68,7 +69,7 @@
 
         <TextView
             android:id="@+id/price"
-            style="@style/TextNormBlackBold"
+            style="@style/TextBigBlackBold"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"

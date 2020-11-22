@@ -37,7 +37,7 @@
     </style>
 
     <style name="TextToolbar">
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/color_black</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
@@ -60,7 +60,7 @@
         <item name="android:textSize">14sp</item>
     </style>
 
-    <style name="TextNormBlack" parent="Text">
+    <style name="TextBigBlack" parent="Text">
         <item name="android:textColor">@color/color_black</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
@@ -68,7 +68,7 @@
         <item name="android:textSize">20sp</item>
     </style>
 
-    <style name="TextNormBlackBold" parent="Text">
+    <style name="TextBigBlackBold" parent="Text">
         <item name="android:textColor">@color/color_black</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textStyle">bold</item>
@@ -92,12 +92,39 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="TitleBigGray" parent="Text">
+        <item name="android:textColor">@color/color_gray</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TitleMediumGray" parent="Text">
+        <item name="android:textColor">@color/color_gray</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
     <style name="TextSmallGray" parent="Text">
         <item name="android:textColor">@color/color_gray</item>
         <item name="fontFamily">sans-serif</item>
         <item name="android:textStyle">normal</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="TanomButton" parent="@android:style/Widget.Button">
+        <item name="android:gravity">center</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@drawable/selector_button_color</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:background">@drawable/selector_button_background</item>
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
     </style>
 
 </resources>
