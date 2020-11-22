@@ -48,7 +48,7 @@ class SearchFragment : BaseFragment(){
         view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
         view.ads_rv?.adapter = adsAdapter
         view.shimmer_ads_rv.layoutManager = GridLayoutManager(view.context, 2)
-        view.shimmer_ads_rv.adapter = ShimmerAdsAdapter(arrayOf(0, 0, 0, 0))
+        view.shimmer_ads_rv.adapter = ShimmerAdsAdapter()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             view.swipe_container.setColorSchemeColors(

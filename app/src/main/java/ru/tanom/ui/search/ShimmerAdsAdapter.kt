@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ru.tanom.R
 
-class ShimmerAdsAdapter(private val shimmerAds: Array<Int>) :
+class ShimmerAdsAdapter() :
 
     RecyclerView.Adapter<ShimmerAdsAdapter.ShimmerViewHolder>() {
 
@@ -22,13 +22,9 @@ class ShimmerAdsAdapter(private val shimmerAds: Array<Int>) :
     }
 
     override fun onBindViewHolder(holder: ShimmerViewHolder, position: Int) {
-        holder.bind(shimmerAds[position])
     }
 
-    override fun getItemCount() = shimmerAds.size
+    override fun getItemCount() = 4
 
-    class ShimmerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(item: Int) {
-        }
-    }
+    class ShimmerViewHolder(view: View) : RecyclerView.ViewHolder(view)
 }
