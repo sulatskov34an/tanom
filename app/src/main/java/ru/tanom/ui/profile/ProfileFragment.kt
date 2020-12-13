@@ -22,9 +22,6 @@ class ProfileFragment : Fragment() {
         profileViewModel =
             ViewModelProviders.of(this).get(ProfileViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_profile, container, false)
-        profileViewModel.text.observe(viewLifecycleOwner, Observer {
-
-        })
         return root
     }
 }
