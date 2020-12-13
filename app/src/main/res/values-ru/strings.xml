@@ -9,8 +9,11 @@
     <string name="add">Разместить</string>
     <string name="message">Сообщения</string>
     <string name="profile">Профиль</string>
+    <string name="auth">Авторизация</string>
     <string name="ad_details">Детали объявления</string>
     <string name="to_search">К поиску</string>
     <string name="signin_or_signup_text">Войдите или загегистрируйтесь, чтобы пользоваться всеми функциями</string>
     <string name="login_or_signup">Войти или зарегистрироваться</string>
+    <string name="login">Войти</string>
+    <string name="register">Зарегистрироваться</string>
 </resources>

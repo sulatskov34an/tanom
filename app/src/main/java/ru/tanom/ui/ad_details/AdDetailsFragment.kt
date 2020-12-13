@@ -26,7 +26,7 @@ class AdDetailsFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_ad_details, container, false)
-        root.setOnTouchListener(object: OnSwipeTouchListener(activity){
+        root.setOnTouchListener(object : OnSwipeTouchListener(activity) {
             override fun onSwipeRight() {
                 findNavController().navigate(R.id.action_to_ads_search)
             }
@@ -84,7 +84,9 @@ class AdDetailsFragment : BaseFragment() {
     }
 
     override fun setToolbar() {
-        text_toolbar.setText(R.string.to_search)
-        back.setOnClickListener { findNavController().navigate(R.id.action_to_ads_search) }
+        toolbar.setNavigationOnClickListener {
+            findNavController().navigate(R.id.action_to_ads_search)
+        }
+        toolbar.setTitle(R.string.to_search)
     }
 }

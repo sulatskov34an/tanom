@@ -17,30 +17,9 @@
 
         <Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/color_white"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-            <LinearLayout
-                android:id="@+id/back"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_arrow" />
-
-                <TextView
-                    android:id="@+id/text_toolbar"
-                    style="@style/TextToolbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    tools:text="К поиску" />
-            </LinearLayout>
-        </Toolbar>
+            android:title="@string/to_search"
+            style="@style/TanomToolbar"
+            android:navigationIcon="@drawable/ic_arrow" />
 
     </com.google.android.material.appbar.AppBarLayout>
 

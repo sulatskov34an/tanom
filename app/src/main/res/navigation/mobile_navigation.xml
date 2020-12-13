@@ -23,19 +23,39 @@
         android:id="@+id/addFragment"
         android:name="ru.tanom.ui.add.AddFragment"
         android:label="@string/add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add">
+        <action
+            android:id="@+id/action_to_auth"
+            app:destination="@id/authBottomSheetFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/messageFragment"
         android:name="ru.tanom.ui.message.MessageFragment"
         android:label="@string/message"
-        tools:layout="@layout/fragment_message" />
+        tools:layout="@layout/fragment_message">
+        <action
+            android:id="@+id/action_to_auth"
+            app:destination="@id/authBottomSheetFragment" />
+    </fragment>
+
 
     <fragment
         android:id="@+id/profileFragment"
         android:name="ru.tanom.ui.profile.ProfileFragment"
         android:label="@string/profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_to_auth"
+            app:destination="@id/authBottomSheetFragment" />
+    </fragment>
+
+    <dialog
+        android:id="@+id/authBottomSheetFragment"
+        android:name="ru.tanom.ui.auth.auth_bottom_sheet.AuthBottomSheetFragment"
+        android:label="@string/profile"
+        tools:layout="@layout/bottom_sheet_auth" />
 
     <fragment
         android:id="@+id/adDetailsFragment"
@@ -45,5 +65,6 @@
             android:id="@+id/action_to_ads_search"
             app:destination="@id/searchFragment" />
     </fragment>
+
 
 </navigation>

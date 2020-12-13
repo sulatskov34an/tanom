@@ -9,8 +9,11 @@
     <string name="add">Add</string>
     <string name="message">Message</string>
     <string name="profile">Profile</string>
+    <string name="auth">Auth</string>
     <string name="ad_details">Ad Details</string>
     <string name="to_search">To search</string>
     <string name="signin_or_signup_text">Login or register to use the features</string>
     <string name="login_or_signup">Login or register</string>
+    <string name="login">Login</string>
+    <string name="register">Register</string>
 </resources>
