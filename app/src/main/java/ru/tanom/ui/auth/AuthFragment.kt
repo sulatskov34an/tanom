@@ -1,6 +1,5 @@
 package ru.tanom.ui.auth
 
-import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 
 class AuthFragment: BaseFragment() {
@@ -13,6 +12,6 @@ class AuthFragment: BaseFragment() {
     override fun hidePlaceholder() {
     }
 
-    override fun setToolbar() {
+    override fun setupToolbar() {
     }
 }

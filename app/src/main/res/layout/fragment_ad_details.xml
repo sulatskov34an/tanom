@@ -17,7 +17,6 @@
 
         <Toolbar
             android:id="@+id/toolbar"
-            android:title="@string/to_search"
             style="@style/TanomToolbar"
             android:navigationIcon="@drawable/ic_arrow" />
 

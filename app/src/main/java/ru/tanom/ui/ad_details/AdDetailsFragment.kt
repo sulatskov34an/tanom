@@ -86,8 +86,8 @@ class AdDetailsFragment : BaseFragment() {
     override fun hidePlaceholder() {
     }
 
-    override fun setToolbar() {
-        toolbar.setNavigationOnClickListener {
+    override fun setupToolbar() {
+        fragmentAdDetailsBinding?.toolbar?.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_to_ads_search)
         }
     }

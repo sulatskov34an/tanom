@@ -2,7 +2,6 @@ package ru.tanom.base.view
 
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.tanom.R
@@ -21,14 +20,14 @@ abstract class BaseFragment : Fragment(), BaseViewInterface {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setToolbar()
+        setupToolbar()
     }
 
     abstract fun showPlaceholder()
 
     abstract fun hidePlaceholder()
 
-    abstract fun setToolbar()
+    abstract fun setupToolbar()
 
     override fun onProgress() {
         (activity as? MainActivity)?.showProgress()

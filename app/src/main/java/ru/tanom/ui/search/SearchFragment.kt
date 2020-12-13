@@ -93,7 +93,7 @@ class SearchFragment : BaseFragment() {
         fragmentSearchBinding?.noInternet?.gone()
     }
 
-    override fun setToolbar() {
+    override fun setupToolbar() {
 
     }
 

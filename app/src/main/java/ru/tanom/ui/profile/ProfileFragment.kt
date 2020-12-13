@@ -47,7 +47,7 @@ class ProfileFragment : BaseFragment() {
 
     }
 
-    override fun setToolbar() {
-        toolbar.setTitle(R.string.profile)
+    override fun setupToolbar() {
+        fragmentProfileBinding?.toolbarTitle?.text = context?.resources?.getText(R.string.profile)
     }
 }
