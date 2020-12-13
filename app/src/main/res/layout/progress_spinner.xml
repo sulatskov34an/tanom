@@ -10,7 +10,7 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center"
-        android:background="@drawable/shape_corner_bg">
+        android:background="@drawable/shape_corners_round_bg">
 
         <ProgressBar
             android:layout_width="wrap_content"
