@@ -2,20 +2,21 @@ package ru.tanom.di.module
 
 import dagger.Module
 import dagger.Provides
-import dagger.Reusable
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
+import javax.inject.Singleton
 
 @Module
-@Suppress("unused")
-object OkHttpClientModule {
+class OkHttpClientModule {
 
     @Provides
-    @Reusable
-    @JvmStatic
-    internal fun okHttpClient(loggingInterceptor: HttpLoggingInterceptor, baseInterceptor: Interceptor) = OkHttpClient
+    @Singleton
+    fun okHttpClient(
+        loggingInterceptor: HttpLoggingInterceptor,
+        baseInterceptor: Interceptor
+    ): OkHttpClient = OkHttpClient
         .Builder()
         .addInterceptor(loggingInterceptor)
         .addInterceptor(baseInterceptor)
@@ -24,9 +25,8 @@ object OkHttpClientModule {
         .build()
 
     @Provides
-    @Reusable
-    @JvmStatic
-    internal fun loggingInterceptor() = run {
+    @Singleton
+    fun loggingInterceptor() = run {
         val httpLoggingInterceptor = HttpLoggingInterceptor()
         httpLoggingInterceptor.apply {
             httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
@@ -34,9 +34,8 @@ object OkHttpClientModule {
     }
 
     @Provides
-    @Reusable
-    @JvmStatic
-    internal fun interceptor() = Interceptor.invoke { chain ->
+    @Singleton
+    fun interceptor() = Interceptor.invoke { chain ->
         val newUrl = chain
             .request()
             .url

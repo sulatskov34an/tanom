@@ -27,6 +27,7 @@ class LoginFragment: BaseFragment() {
         (activity as? MainActivity)?.hideBottomNavigation()
     }
 
+
     override fun <T> onSuccess(content: T?) {
     }
 

@@ -20,10 +20,12 @@ import ru.tanom.common.visible
 import ru.tanom.databinding.FragmentSearchBinding
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
+import javax.inject.Inject
 
 class SearchFragment : BaseFragment() {
 
-    private lateinit var searchViewModel: SearchViewModel
+    @Inject
+    lateinit var searchViewModel: SearchViewModel
     private var fragmentSearchBinding: FragmentSearchBinding? = null
 
     private var adsAdapter =

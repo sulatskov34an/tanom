@@ -12,4 +12,5 @@ class SearchViewModel : BaseViewModel() {
     fun getAdsList() {
         request(list) { api.getAdsList() }
     }
+
 }

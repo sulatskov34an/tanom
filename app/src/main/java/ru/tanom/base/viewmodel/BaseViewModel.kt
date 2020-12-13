@@ -5,30 +5,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ru.tanom.di.component.DaggerViewModelInjector
-import ru.tanom.di.component.ViewModelInjector
-import ru.tanom.di.module.NetworkModule
+import ru.tanom.di.component.DaggerMainComponent
 import ru.tanom.model.network.ApiInterface
-import ru.tanom.ui.ad_details.AdDetailsViewModel
-import ru.tanom.ui.search.SearchViewModel
 import javax.inject.Inject
 
 abstract class BaseViewModel : ViewModel() {
-    private val injector: ViewModelInjector = DaggerViewModelInjector
-        .builder()
-        .networkModule(NetworkModule)
-        .build()
-
-    init {
-        inject()
-    }
-
-    private fun inject() {
-        when (this) {
-            is SearchViewModel -> injector.inject(this)
-            is AdDetailsViewModel -> injector.inject(this)
-        }
-    }
 
     @Inject
     lateinit var api: ApiInterface
@@ -37,6 +18,8 @@ abstract class BaseViewModel : ViewModel() {
         liveData: MutableLiveData<Event<T>>,
         request: suspend () -> T
     ) {
+
+        DaggerMainComponent.builder().build().inject(this)
 
         liveData.postValue(Event.loading())
 

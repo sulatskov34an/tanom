@@ -37,6 +37,7 @@ class ProfileFragment : BaseFragment() {
         (activity as? MainActivity)?.showBottomNavigation()
     }
 
+
     override fun showPlaceholder() {
 
     }
