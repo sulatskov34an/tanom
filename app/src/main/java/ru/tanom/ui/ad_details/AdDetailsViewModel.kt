@@ -11,6 +11,6 @@ class AdDetailsViewModel : BaseViewModel() {
     val ad = MutableLiveData<Event<BaseResponse<Ad>>>()
 
     fun getAd(id: Int?) {
-        request(ad) {api.getAd(id)}
+        request(ad) { api.getAd(id) }
     }
 }

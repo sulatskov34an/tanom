@@ -19,12 +19,16 @@ import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.gone
 import ru.tanom.common.visible
+import ru.tanom.databinding.FragmentAdDetailsBinding
+import ru.tanom.databinding.FragmentSearchBinding
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
-class SearchFragment : BaseFragment(){
+class SearchFragment : BaseFragment() {
 
     private lateinit var searchViewModel: SearchViewModel
+    private var fragmentSearchBinding: FragmentSearchBinding? = null
+
     private var adsAdapter =
         AdsAdapter {
             val bundle = Bundle()
@@ -38,17 +42,18 @@ class SearchFragment : BaseFragment(){
         savedInstanceState: Bundle?
     ): View? {
         setHasOptionsMenu(true)
-        val root = inflater.inflate(R.layout.fragment_search, container, false)
-        return root
+        fragmentSearchBinding = FragmentSearchBinding.inflate(inflater, container, false)
+        return fragmentSearchBinding?.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? MainActivity)?.showBottomNavigation()
-        view.ads_rv?.layoutManager = GridLayoutManager(view.context, 2)
-        view.ads_rv?.adapter = adsAdapter
-        view.shimmer_ads_rv.layoutManager = GridLayoutManager(view.context, 2)
-        view.shimmer_ads_rv.adapter = ShimmerAdsAdapter()
+        fragmentSearchBinding?.adsRv?.layoutManager = GridLayoutManager(view.context, 2)
+        fragmentSearchBinding?.adsRv?.adapter = adsAdapter
+        fragmentSearchBinding?.shimmerAdsRv?.layoutManager = GridLayoutManager(view.context, 2)
+        fragmentSearchBinding?.shimmerAdsRv?.adapter = ShimmerAdsAdapter()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             view.swipe_container.setColorSchemeColors(
@@ -58,7 +63,7 @@ class SearchFragment : BaseFragment(){
                 )
             )
         } else {
-            view.swipe_container.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
+            fragmentSearchBinding?.swipeContainer?.setColorSchemeColors(resources.getColor(R.color.colorPrimary))
         }
         searchViewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
         searchViewModel.list.observe(this.viewLifecycleOwner, Observer {
@@ -81,11 +86,11 @@ class SearchFragment : BaseFragment(){
     }
 
     override fun showPlaceholder() {
-        view?.no_internet?.visible()
+        fragmentSearchBinding?.noInternet?.visible()
     }
 
     override fun hidePlaceholder() {
-        view?.no_internet?.gone()
+        fragmentSearchBinding?.noInternet?.gone()
     }
 
     override fun setToolbar() {
@@ -94,12 +99,12 @@ class SearchFragment : BaseFragment(){
 
 
     override fun onProgress() {
-        shimmer_search.visible()
+        fragmentSearchBinding?.shimmerSearch?.visible()
         swipe_container.isRefreshing = false
     }
 
     override fun hideProgress() {
-        shimmer_search.gone()
+        fragmentSearchBinding?.shimmerSearch?.gone()
         swipe_container.isRefreshing = false
     }
 

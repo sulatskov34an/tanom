@@ -7,6 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="bottomSheetDialogTheme">@style/BottomSheetDialogRound</item>
+        <item name="toolbarStyle">@style/TanomToolbar</item>
     </style>
 
     <style name="AppTheme.NoActionBar">

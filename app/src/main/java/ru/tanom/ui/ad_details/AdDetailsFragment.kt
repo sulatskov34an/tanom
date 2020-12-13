@@ -1,9 +1,8 @@
 package ru.tanom.ui.ad_details
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
-import android.view.GestureDetector.SimpleOnGestureListener
-import android.view.MotionEvent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
@@ -14,26 +13,24 @@ import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.*
+import ru.tanom.databinding.FragmentAdDetailsBinding
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
 
 class AdDetailsFragment : BaseFragment() {
 
     private lateinit var adDetailsViewModel: AdDetailsViewModel
+    private var fragmentAdDetailsBinding: FragmentAdDetailsBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.fragment_ad_details, container, false)
-        root.setOnTouchListener(object : OnSwipeTouchListener(activity) {
-            override fun onSwipeRight() {
-                findNavController().navigate(R.id.action_to_ads_search)
-            }
-        })
-        return root
+        fragmentAdDetailsBinding = FragmentAdDetailsBinding.inflate(inflater, container, false)
+        return fragmentAdDetailsBinding?.root
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         (activity as? MainActivity)?.hideBottomNavigation()
@@ -48,17 +45,23 @@ class AdDetailsFragment : BaseFragment() {
             }
         })
         adDetailsViewModel.getAd(id)
+
+        fragmentAdDetailsBinding?.root?.setOnTouchListener(object : OnSwipeTouchListener(activity) {
+            override fun onSwipeRight() {
+                findNavController().navigate(R.id.action_to_ads_search)
+            }
+        })
     }
 
 
     override fun <T> onSuccess(content: T?) {
-        view?.content?.visible()
+        fragmentAdDetailsBinding?.content?.visible()
         hideProgress()
         val ad = (content as? Ad)
-        view?.description?.text = ad?.description.toString()
+        fragmentAdDetailsBinding?.description?.text = ad?.description.toString()
         context?.let {
-            view?.image?.apply {
-                val path = "saffdasfd"
+            fragmentAdDetailsBinding?.image?.apply {
+                val path = "hardCode"
                 Picasso.get()
                     .load(path)
                     .error(R.drawable.ic_error)
@@ -66,12 +69,12 @@ class AdDetailsFragment : BaseFragment() {
                     .into(image)
             }
         }
-        view?.title?.text =
+        fragmentAdDetailsBinding?.title?.text =
             "${ad?.carFactory} ${ad?.carModel}, ${ad?.productionYear}, ${ad?.mileage}"
-        view?.inspectionPlace?.text = ad?.inspectionPlace.toString()
-        view?.price?.text = "${ad?.price} ₽"
-        view?.context?.let {
-            view?.creation_date?.text =
+        fragmentAdDetailsBinding?.inspectionPlace?.text = ad?.inspectionPlace.toString()
+        fragmentAdDetailsBinding?.price?.text = "${ad?.price} ₽"
+        context?.let {
+            fragmentAdDetailsBinding?.creationDate?.text =
                 TimeUtils(it).getDateWithInTime(it, ad?.creationDate ?: 0)
         }
 
@@ -87,6 +90,5 @@ class AdDetailsFragment : BaseFragment() {
         toolbar.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_to_ads_search)
         }
-        toolbar.setTitle(R.string.to_search)
     }
 }

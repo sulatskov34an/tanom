@@ -2,6 +2,7 @@ package ru.tanom.base.view
 
 import android.os.Bundle
 import android.view.View
+import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import kotlinx.android.synthetic.main.fragment_search.*
 import ru.tanom.R

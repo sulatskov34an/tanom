@@ -4,26 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_profile.*
 import kotlinx.android.synthetic.main.fragment_profile.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
+import ru.tanom.databinding.FragmentProfileBinding
+import ru.tanom.databinding.FragmentSearchBinding
 
 class ProfileFragment : BaseFragment() {
 
     private lateinit var profileViewModel: ProfileViewModel
+    private var fragmentProfileBinding: FragmentProfileBinding? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        profileViewModel =
-            ViewModelProviders.of(this).get(ProfileViewModel::class.java)
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        fragmentProfileBinding = FragmentProfileBinding.inflate(inflater, container, false)
+        return fragmentProfileBinding?.root
     }
 
     override fun <T> onSuccess(content: T?) {
@@ -32,7 +34,7 @@ class ProfileFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.login_or_reg.setOnClickListener {
+        fragmentProfileBinding?.loginOrReg?.setOnClickListener {
             findNavController().navigate(R.id.action_to_auth)
         }
     }
