@@ -14,12 +14,14 @@ abstract class BaseViewModel : ViewModel() {
     @Inject
     lateinit var api: ApiInterface
 
+    init {
+        DaggerMainComponent.builder().build().inject(this)
+    }
+
     fun <T> request(
         liveData: MutableLiveData<Event<T>>,
         request: suspend () -> T
     ) {
-
-        DaggerMainComponent.builder().build().inject(this)
 
         liveData.postValue(Event.loading())
 
