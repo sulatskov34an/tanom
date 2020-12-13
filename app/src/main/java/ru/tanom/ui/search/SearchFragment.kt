@@ -20,11 +20,9 @@ import ru.tanom.common.visible
 import ru.tanom.databinding.FragmentSearchBinding
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
-import javax.inject.Inject
 
 class SearchFragment : BaseFragment() {
 
-    @Inject
     lateinit var searchViewModel: SearchViewModel
     private var fragmentSearchBinding: FragmentSearchBinding? = null
 
@@ -78,10 +76,10 @@ class SearchFragment : BaseFragment() {
         }
     }
 
-    override fun <T> onSuccess(content: T?) {
+    override fun <T> onSuccess(data: T?) {
         hideProgress()
         hidePlaceholder()
-        adsAdapter.setData((content as? List<Ad>) ?: emptyList())
+        adsAdapter.setData((data as? List<Ad>) ?: emptyList())
     }
 
     override fun showPlaceholder() {

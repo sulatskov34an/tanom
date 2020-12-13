@@ -10,7 +10,7 @@ class SearchViewModel : BaseViewModel() {
     val list = MutableLiveData<Event<BaseResponse<List<Ad>>>>()
 
     fun getAdsList() {
-        request(list) { api.getAdsList() }
+        request(list) { apiService.getAdsList() }
     }
 
 }

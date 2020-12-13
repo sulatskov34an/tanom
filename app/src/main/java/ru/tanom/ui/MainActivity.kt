@@ -2,8 +2,10 @@ package ru.tanom.ui
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.view.inputmethod.InputMethodManager
 import androidx.annotation.IdRes
 import androidx.core.content.ContextCompat
 import androidx.navigation.Navigation
@@ -34,8 +36,12 @@ class MainActivity : BaseActivity(), ProgressManager {
         val navController = host.navController
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav?.setupWithNavController(navController)
-        bottomNav?.setOnNavigationItemSelectedListener{
-            item -> onNavDestinationSelected(item, Navigation.findNavController(this, R.id.nav_host_fragment))
+        bottomNav?.setOnNavigationItemSelectedListener{ item -> onNavDestinationSelected(
+            item, Navigation.findNavController(
+                this,
+                R.id.nav_host_fragment
+            )
+        )
         }
     }
 
@@ -61,5 +67,17 @@ class MainActivity : BaseActivity(), ProgressManager {
 
     override fun hideProgress() {
         main_progress.gone()
+    }
+
+    fun hideKeyboard() {
+        val imm: InputMethodManager =
+            this.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        //Find the currently focused view, so we can grab the correct window token from it.
+        var view: View? = this.currentFocus
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = View(this)
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 }

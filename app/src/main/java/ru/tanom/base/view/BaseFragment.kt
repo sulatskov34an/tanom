@@ -10,9 +10,9 @@ import ru.tanom.ui.MainActivity
 
 abstract class BaseFragment : Fragment(), BaseViewInterface {
 
-    abstract fun <T> onSuccess(content: T?)
+    abstract fun <T> onSuccess(data: T?)
 
-    fun onError() {
+    open fun onError() {
         snackbar(getString(R.string.error_text))
         hideProgress()
         showPlaceholder()
@@ -44,5 +44,9 @@ abstract class BaseFragment : Fragment(), BaseViewInterface {
     override fun hideProgress() {
         (activity as? MainActivity)?.hideProgress()
         swipe_container?.isRefreshing = false
+    }
+
+    fun hideKeyboard(){
+        (activity as? MainActivity)?.hideKeyboard()
     }
 }

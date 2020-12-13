@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import ru.tanom.di.component.DaggerMainComponent
 import ru.tanom.model.network.ApiInterface
 import javax.inject.Inject
@@ -12,7 +13,10 @@ import javax.inject.Inject
 abstract class BaseViewModel : ViewModel() {
 
     @Inject
-    lateinit var api: ApiInterface
+    lateinit var apiService: ApiInterface
+
+//    @Inject
+//    lateinit var prefsService: PrefsService
 
     init {
         DaggerMainComponent.builder().build().inject(this)
@@ -32,8 +36,9 @@ abstract class BaseViewModel : ViewModel() {
                     liveData.postValue(Event.success(response))
                 }
             } catch (e: Exception) {
-                e.printStackTrace()
-                liveData.postValue(Event.error(null))
+                (e as? HttpException)?.code()?.let {
+                    liveData.postValue(Event.error(it))
+                }
             }
         }
     }

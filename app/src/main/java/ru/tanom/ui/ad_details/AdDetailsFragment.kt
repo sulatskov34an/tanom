@@ -54,10 +54,10 @@ class AdDetailsFragment : BaseFragment() {
         })
     }
 
-    override fun <T> onSuccess(content: T?) {
+    override fun <T> onSuccess(data: T?) {
         fragmentAdDetailsBinding?.content?.visible()
         hideProgress()
-        val ad = (content as? Ad)
+        val ad = (data as? Ad)
         fragmentAdDetailsBinding?.description?.text = ad?.description.toString()
         context?.let {
             fragmentAdDetailsBinding?.image?.apply {

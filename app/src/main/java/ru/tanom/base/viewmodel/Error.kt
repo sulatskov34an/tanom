@@ -1,3 +1,3 @@
 package ru.tanom.base.viewmodel
 
-class Error
+class ErrorCode(val code: String)

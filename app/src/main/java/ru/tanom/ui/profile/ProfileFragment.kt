@@ -25,7 +25,7 @@ class ProfileFragment : BaseFragment() {
         return fragmentProfileBinding?.root
     }
 
-    override fun <T> onSuccess(content: T?) {
+    override fun <T> onSuccess(data: T?) {
 
     }
 

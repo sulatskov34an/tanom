@@ -19,5 +19,6 @@
     <string name="login_enter">Login</string>
     <string name="password_text">Password</string>
     <string name="login_text">Login</string>
-    <string name="forgot_password_text">Забыли пароль?</string>
+    <string name="forgot_password_text">Forgot your password?</string>
+    <string name="error_auth_text">Invalid username / password or data loading error</string>
 </resources>

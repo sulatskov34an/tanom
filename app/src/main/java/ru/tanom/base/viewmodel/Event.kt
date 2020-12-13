@@ -1,6 +1,6 @@
 package ru.tanom.base.viewmodel
 
-data class Event<out T>(val status: Status, val data: T?, val error: Error?) {
+data class Event<out T>(val status: Status, val data: T?, val errorCode: Int?) {
 
     companion object {
         fun <T> loading(): Event<T> {
@@ -19,11 +19,11 @@ data class Event<out T>(val status: Status, val data: T?, val error: Error?) {
             )
         }
 
-        fun <T> error(error: Error?): Event<T> {
+        fun <T> error(errorCode: Int): Event<T> {
             return Event(
                 Status.ERROR,
                 null,
-                error
+                errorCode
             )
         }
     }
