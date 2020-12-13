@@ -16,4 +16,6 @@
     <string name="login_or_signup">Войти или зарегистрироваться</string>
     <string name="login">Войти</string>
     <string name="register">Зарегистрироваться</string>
+    <string name="login_enter">Вход</string>
+    <string name="password_text">Пароль</string>
 </resources>

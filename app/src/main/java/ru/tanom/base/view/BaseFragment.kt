@@ -29,6 +29,13 @@ abstract class BaseFragment : Fragment(), BaseViewInterface {
 
     abstract fun setupToolbar()
 
+    abstract fun destroyBinding()
+
+    override fun onDestroyView() {
+        destroyBinding()
+        super.onDestroyView()
+    }
+
     override fun onProgress() {
         (activity as? MainActivity)?.showProgress()
         swipe_container?.isRefreshing = false

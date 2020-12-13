@@ -4,14 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_profile.*
-import kotlinx.android.synthetic.main.fragment_profile.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.databinding.FragmentProfileBinding
-import ru.tanom.databinding.FragmentSearchBinding
+import ru.tanom.ui.MainActivity
 
 class ProfileFragment : BaseFragment() {
 
@@ -37,6 +34,7 @@ class ProfileFragment : BaseFragment() {
         fragmentProfileBinding?.loginOrReg?.setOnClickListener {
             findNavController().navigate(R.id.action_to_auth)
         }
+        (activity as? MainActivity)?.showBottomNavigation()
     }
 
     override fun showPlaceholder() {
@@ -49,5 +47,9 @@ class ProfileFragment : BaseFragment() {
 
     override fun setupToolbar() {
         fragmentProfileBinding?.toolbarTitle?.text = context?.resources?.getText(R.string.profile)
+    }
+
+    override fun destroyBinding() {
+        fragmentProfileBinding = null
     }
 }

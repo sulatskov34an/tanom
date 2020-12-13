@@ -2,12 +2,13 @@ package ru.tanom.ui.ad_details
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_ad_details.*
 import kotlinx.android.synthetic.main.fragment_ad_details.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
@@ -53,7 +54,6 @@ class AdDetailsFragment : BaseFragment() {
         })
     }
 
-
     override fun <T> onSuccess(content: T?) {
         fragmentAdDetailsBinding?.content?.visible()
         hideProgress()
@@ -90,5 +90,9 @@ class AdDetailsFragment : BaseFragment() {
         fragmentAdDetailsBinding?.toolbar?.setNavigationOnClickListener {
             findNavController().navigate(R.id.action_to_ads_search)
         }
+    }
+
+    override fun destroyBinding() {
+        fragmentAdDetailsBinding = null
     }
 }

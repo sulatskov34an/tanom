@@ -16,4 +16,6 @@
     <string name="login_or_signup">Login or register</string>
     <string name="login">Login</string>
     <string name="register">Register</string>
+    <string name="login_enter">Login</string>
+    <string name="password_text">Password</string>
 </resources>

@@ -54,8 +54,17 @@
     <dialog
         android:id="@+id/authBottomSheetFragment"
         android:name="ru.tanom.ui.auth.auth_bottom_sheet.AuthBottomSheetFragment"
-        android:label="@string/profile"
-        tools:layout="@layout/bottom_sheet_auth" />
+        android:label="@string/auth"
+        tools:layout="@layout/bottom_sheet_auth">
+    <action
+        android:id="@+id/action_to_login"
+        app:destination="@id/loginFragment" />
+    </dialog>
+
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="ru.tanom.ui.auth.LoginFragment"
+        android:label="@string/login" />
 
     <fragment
         android:id="@+id/adDetailsFragment"

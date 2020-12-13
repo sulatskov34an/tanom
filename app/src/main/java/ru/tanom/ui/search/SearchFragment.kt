@@ -11,15 +11,12 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.fragment_search.view.*
-import kotlinx.android.synthetic.main.placeholder_search_shimmer.*
-import kotlinx.android.synthetic.main.placeholder_search_shimmer.view.*
 import ru.tanom.R
 import ru.tanom.base.view.BaseFragment
 import ru.tanom.base.viewmodel.Status
 import ru.tanom.common.AppConst
 import ru.tanom.common.gone
 import ru.tanom.common.visible
-import ru.tanom.databinding.FragmentAdDetailsBinding
 import ru.tanom.databinding.FragmentSearchBinding
 import ru.tanom.model.network.dto.Ad
 import ru.tanom.ui.MainActivity
@@ -95,6 +92,10 @@ class SearchFragment : BaseFragment() {
 
     override fun setupToolbar() {
 
+    }
+
+    override fun destroyBinding() {
+        fragmentSearchBinding = null
     }
 
 
