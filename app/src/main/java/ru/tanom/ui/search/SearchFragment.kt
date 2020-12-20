@@ -79,7 +79,7 @@ class SearchFragment : BaseFragment() {
     override fun <T> onSuccess(data: T?) {
         hideProgress()
         hidePlaceholder()
-        adsAdapter.setData((data as? List<Ad>) ?: emptyList())
+        adsAdapter.setData((data as? List<Ad>)?.sortedByDescending { it.creationDate } ?: emptyList())
     }
 
     override fun showPlaceholder() {

@@ -45,6 +45,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
         fun bind(ad: Ad, listener: (Ad) -> Unit) {
             itemView.description.text = "${ad.carFactory} ${ad.carModel}, ${ad.productionYear}"
             itemView.image?.apply {
+                //todo hard code
                 val path = "https://tanom.herokuapp.com/file/files/kosmos-f11207f0020c.jpg"
                 Picasso.get()
                     .load(path)
@@ -58,7 +59,7 @@ class AdsAdapter(private val listener: (Ad) -> Unit) :
             itemView.price.text = "${ad.price} ₽"
             itemView.inspectionPlace.text = ad.inspectionPlace.toString()
             itemView.date.text =
-                TimeUtils(itemView.context).getDateWithInTime(itemView.context, ad.creationDate)
+                TimeUtils(itemView.context).getDateWithInTime(itemView.context, ad.creationDate/1000)
         }
     }
 }

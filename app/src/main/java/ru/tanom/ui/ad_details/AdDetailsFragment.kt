@@ -61,7 +61,7 @@ class AdDetailsFragment : BaseFragment() {
         fragmentAdDetailsBinding?.description?.text = ad?.description.toString()
         context?.let {
             fragmentAdDetailsBinding?.image?.apply {
-                val path = "hardCode"
+                val path = "no_backend"
                 Picasso.get()
                     .load(path)
                     .error(R.drawable.ic_error)

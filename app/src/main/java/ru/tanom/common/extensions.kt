@@ -7,7 +7,6 @@ import androidx.fragment.app.Fragment
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.google.android.material.snackbar.Snackbar
 
-
 interface ProgressManager {
     fun showProgress()
     fun hideProgress()
@@ -39,8 +38,4 @@ fun getProgressBar(context: Context): CircularProgressDrawable {
     circularProgressDrawable.start()
 
     return circularProgressDrawable
-}
-
-fun getDate(date: String): String{
-    return date.replace(" ", " в ")
 }
